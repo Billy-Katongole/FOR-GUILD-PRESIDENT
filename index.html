@@ -125,10 +125,6 @@
       height: 64px;
       object-fit: contain;
     }
-    /* fallback shield icon if image fails */
-    .logo-badge .shield {
-      font-size: 2.2rem;
-    }
 
     /* vote badge */
     .vote-badge {
@@ -159,7 +155,7 @@
       letter-spacing: .05em;
     }
 
-    /* candidate photo placeholder – gradient silhouette */
+    /* candidate photo – now using real Billy.png */
     .candidate-photo {
       width: 260px;
       height: 310px;
@@ -168,7 +164,6 @@
       display: block;
       position: relative;
       z-index: 1;
-      /* slight drop-shadow for cutout feel */
       filter: drop-shadow(0 -4px 20px rgba(0,0,0,.12));
     }
 
@@ -315,14 +310,9 @@
     <!-- Photo area -->
     <div class="photo-row">
 
-      <!-- University logo (uses NDU crest from their site) -->
+      <!-- University logo: REAL local image "logo.jpg" -->
       <div class="logo-badge">
-        <img
-          src="https://www.ndu.ac.ug/wp-content/uploads/2021/01/NDU-Logo.png"
-          alt="NDU Crest"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-        />
-        <span class="shield" style="display:none;">🛡️</span>
+        <img src="logo.jpg" alt="Ndejje University Crest" />
       </div>
 
       <!-- Vote badge -->
@@ -331,17 +321,11 @@
         <div class="vote-year">2026–2027</div>
       </div>
 
-      <!--
-        ══ CANDIDATE PHOTO ══
-        Replace the src below with the actual photo URL or a relative path
-        such as "billy.jpg" placed in the same folder as this index.html.
-        GitHub Pages will serve it automatically.
-      -->
+      <!-- Candidate photo: REAL local image "Billy.png" -->
       <img
         class="candidate-photo"
-        src="WhatsApp_Image_2026-04-21_at_7_15_57_PM.jpeg"
+        src="Billy.png"
         alt="Billy Katongole Asiimwe"
-        onerror="this.style.background='linear-gradient(180deg,#e8d5c0,#c4956a)';this.src='';"
       />
     </div>
 
@@ -369,4 +353,3 @@
   </div>
 </body>
 </html>
-I would like to add a real Billy photo and a real ndejjeuniversity log
