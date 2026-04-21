@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Billy Katongole Asiimwe – Guild President 2026-2027</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -26,9 +26,10 @@
       align-items: center;
       justify-content: center;
       overflow-x: hidden;
+      padding: 1rem;
     }
 
-    /* ── decorative background pattern ── */
+    /* decorative background pattern */
     body::before {
       content: '';
       position: fixed;
@@ -40,7 +41,6 @@
       z-index: 0;
     }
 
-    /* faint kente-style diamond grid overlay */
     body::after {
       content: '';
       position: fixed;
@@ -53,13 +53,13 @@
       z-index: 0;
     }
 
-    /* ── card ── */
+    /* card */
     .card {
       position: relative;
       z-index: 1;
-      width: min(480px, 96vw);
+      width: min(500px, 96vw);
       background: linear-gradient(175deg, #ffffff 0%, #fff4ea 55%, #ffdbb8 100%);
-      border-radius: 28px;
+      border-radius: 32px;
       overflow: hidden;
       box-shadow:
         0 0 0 1px rgba(232,114,12,.3),
@@ -73,7 +73,7 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── top banner ── */
+    /* top banner */
     .banner {
       background: var(--black);
       text-align: center;
@@ -85,6 +85,7 @@
       display: block;
       height: 4px;
       background: linear-gradient(90deg, var(--orange-dark), var(--orange-light), var(--orange-dark));
+      margin-top: 6px;
     }
     .banner h1 {
       font-family: 'Bebas Neue', sans-serif;
@@ -94,17 +95,18 @@
       line-height: 1;
     }
 
-    /* ── photo section ── */
+    /* photo row – now with top padding to avoid overlap */
     .photo-row {
       position: relative;
       background: linear-gradient(180deg, #f5f0eb 0%, #fde8cc 100%);
-      min-height: 320px;
+      min-height: 330px;
       display: flex;
       align-items: flex-end;
       justify-content: center;
+      padding-top: 24px;  /* gives space for badges so photo doesn't cover them */
     }
 
-    /* university logo */
+    /* university logo - higher z-index */
     .logo-badge {
       position: absolute;
       top: 20px;
@@ -118,7 +120,8 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      box-shadow: 0 4px 14px rgba(0,0,0,.18);
+      box-shadow: 0 6px 16px rgba(0,0,0,.2);
+      z-index: 10;  /* ensures logo stays above photo */
     }
     .logo-badge img {
       width: 64px;
@@ -126,7 +129,7 @@
       object-fit: contain;
     }
 
-    /* vote badge */
+    /* vote badge - higher z-index */
     .vote-badge {
       position: absolute;
       top: 20px;
@@ -137,6 +140,8 @@
       text-align: center;
       box-shadow: 0 4px 14px rgba(0,0,0,.15);
       border: 2px solid var(--orange-light);
+      z-index: 10;
+      font-weight: 900;
     }
     .vote-badge .vote-word {
       font-family: 'Bebas Neue', sans-serif;
@@ -151,11 +156,11 @@
     .vote-badge .vote-year {
       font-size: .7rem;
       font-weight: 700;
-      color: #555;
+      color: #444;
       letter-spacing: .05em;
     }
 
-    /* candidate photo – now using real Billy.png */
+    /* candidate photo – now with lower z-index so it stays behind badges */
     .candidate-photo {
       width: 260px;
       height: 310px;
@@ -163,8 +168,9 @@
       object-position: top center;
       display: block;
       position: relative;
-      z-index: 1;
+      z-index: 5;
       filter: drop-shadow(0 -4px 20px rgba(0,0,0,.12));
+      border-radius: 20px 20px 0 0;
     }
 
     /* gradient overlay at bottom of photo row */
@@ -174,10 +180,11 @@
       bottom: 0; left: 0; right: 0;
       height: 90px;
       background: linear-gradient(0deg, #fde8cc, transparent);
-      z-index: 0;
+      z-index: 6;
+      pointer-events: none;
     }
 
-    /* ── name block ── */
+    /* name block */
     .name-block {
       background: linear-gradient(160deg, var(--orange-dark) 0%, var(--orange-light) 100%);
       padding: 22px 28px 18px;
@@ -189,6 +196,7 @@
       position: absolute;
       inset: 0;
       background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.4;
     }
     .candidate-name {
       font-family: 'Bebas Neue', sans-serif;
@@ -221,11 +229,10 @@
       flex-shrink: 0;
     }
 
-    /* ── tagline & hashtag ── */
     .tagline {
       font-size: .8rem;
       font-weight: 600;
-      color: rgba(255,255,255,.88);
+      color: rgba(255,255,255,.9);
       letter-spacing: .15em;
       margin-top: 6px;
       text-transform: uppercase;
@@ -235,7 +242,7 @@
       display: inline-block;
       background: white;
       color: var(--orange-dark);
-      font-weight: 700;
+      font-weight: 800;
       font-size: .8rem;
       letter-spacing: .05em;
       padding: 5px 18px;
@@ -245,7 +252,7 @@
       box-shadow: 0 3px 10px rgba(0,0,0,.15);
     }
 
-    /* ── CTA button ── */
+    /* CTA button */
     .cta-wrapper {
       padding: 24px 28px 30px;
       text-align: center;
@@ -297,6 +304,35 @@
       letter-spacing: .04em;
       font-weight: 600;
     }
+
+    /* responsive fine-tuning for very small devices */
+    @media (max-width: 480px) {
+      .photo-row {
+        padding-top: 16px;
+      }
+      .logo-badge {
+        width: 60px;
+        height: 60px;
+        top: 12px;
+        left: 12px;
+      }
+      .logo-badge img {
+        width: 52px;
+        height: 52px;
+      }
+      .vote-badge {
+        top: 12px;
+        right: 12px;
+        padding: 5px 10px;
+      }
+      .vote-badge .vote-word {
+        font-size: 1.3rem;
+      }
+      .candidate-photo {
+        width: 220px;
+        height: 270px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -307,7 +343,7 @@
       <h1>Guild President</h1>
     </div>
 
-    <!-- Photo area -->
+    <!-- Photo area with real images -->
     <div class="photo-row">
 
       <!-- University logo: REAL local image "logo.jpg" -->
