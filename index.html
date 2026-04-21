@@ -103,7 +103,7 @@
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      padding-top: 24px;  /* gives space for badges so photo doesn't cover them */
+      padding-top: 24px;
     }
 
     /* university logo - higher z-index */
@@ -121,7 +121,7 @@
       justify-content: center;
       overflow: hidden;
       box-shadow: 0 6px 16px rgba(0,0,0,.2);
-      z-index: 10;  /* ensures logo stays above photo */
+      z-index: 10;
     }
     .logo-badge img {
       width: 64px;
@@ -160,7 +160,7 @@
       letter-spacing: .05em;
     }
 
-    /* candidate photo – now with lower z-index so it stays behind badges */
+    /* candidate photo */
     .candidate-photo {
       width: 260px;
       height: 310px;
@@ -173,7 +173,6 @@
       border-radius: 20px 20px 0 0;
     }
 
-    /* gradient overlay at bottom of photo row */
     .photo-row::after {
       content: '';
       position: absolute;
@@ -252,7 +251,7 @@
       box-shadow: 0 3px 10px rgba(0,0,0,.15);
     }
 
-    /* CTA button */
+    /* CTA button - enhanced visibility effects */
     .cta-wrapper {
       padding: 24px 28px 30px;
       text-align: center;
@@ -261,48 +260,84 @@
     .vote-btn {
       display: inline-block;
       text-decoration: none;
-      background: linear-gradient(135deg, var(--orange-dark) 0%, var(--orange-light) 100%);
+      background: linear-gradient(135deg, #d35400 0%, #f39c12 100%);
       color: white;
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       letter-spacing: .12em;
       text-transform: uppercase;
-      padding: 16px 44px;
-      border-radius: 50px;
-      border: none;
+      padding: 18px 48px;
+      border-radius: 60px;
+      border: 2px solid rgba(255, 215, 140, 0.8);
       cursor: pointer;
-      box-shadow:
-        0 8px 24px rgba(196,80,0,.45),
-        0 2px 6px rgba(0,0,0,.15),
-        inset 0 1px 0 rgba(255,255,255,.2);
-      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+      box-shadow: 
+        0 0 0 0 rgba(230, 100, 0, 0.7),
+        0 10px 25px rgba(196, 80, 0, 0.5),
+        inset 0 1px 0 rgba(255,255,255,.3);
+      transition: all 0.25s ease;
       position: relative;
       overflow: hidden;
+      animation: pulseGlow 1.8s infinite ease-in-out;
     }
+
+    /* pulse animation for high visibility */
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 110, 0, 0.6), 0 10px 25px rgba(196,80,0,0.5);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 0 12px rgba(255, 110, 0, 0.2), 0 12px 30px rgba(196,80,0,0.7);
+        transform: scale(1.02);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 110, 0, 0), 0 10px 25px rgba(196,80,0,0.5);
+        transform: scale(1);
+      }
+    }
+
     .vote-btn::after {
       content: '';
       position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,.18) 0%, transparent 60%);
-      border-radius: inherit;
+      top: -50%;
+      left: -60%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
     }
+
     .vote-btn:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow:
-        0 14px 36px rgba(196,80,0,.55),
-        0 4px 12px rgba(0,0,0,.2);
-      filter: brightness(1.06);
+      transform: translateY(-4px) scale(1.04);
+      background: linear-gradient(135deg, #e35f00 0%, #ffae2e 100%);
+      box-shadow: 0 0 0 0 rgba(255, 120, 0, 0.8), 0 18px 38px rgba(196,80,0,0.7);
+      animation: none; /* stop pulse on hover for a crisp effect */
+      border-color: #fff0b5;
     }
+
+    .vote-btn:hover::after {
+      opacity: 1;
+    }
+
     .vote-btn:active {
-      transform: translateY(0) scale(.98);
+      transform: translateY(1px) scale(0.99);
+      transition: 0.05s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
+
     .vote-btn-sub {
-      font-size: .68rem;
+      font-size: .72rem;
       color: #a05020;
-      margin-top: 9px;
+      margin-top: 14px;
       letter-spacing: .04em;
-      font-weight: 600;
+      font-weight: 700;
+      background: rgba(255,245,225,0.7);
+      display: inline-block;
+      padding: 4px 16px;
+      border-radius: 40px;
     }
 
     /* responsive fine-tuning for very small devices */
@@ -331,6 +366,16 @@
       .candidate-photo {
         width: 220px;
         height: 270px;
+      }
+      .vote-btn {
+        font-size: 1rem;
+        padding: 14px 32px;
+        letter-spacing: .1em;
+      }
+      @keyframes pulseGlow {
+        0% { box-shadow: 0 0 0 0 rgba(255, 110, 0, 0.6); transform: scale(1);}
+        50% { box-shadow: 0 0 0 8px rgba(255, 110, 0, 0.2); transform: scale(1.01);}
+        100% { box-shadow: 0 0 0 0 rgba(255, 110, 0, 0); transform: scale(1);}
       }
     }
   </style>
@@ -378,12 +423,12 @@
       <div class="hashtag-pill">#the Trailblazer</div>
     </div>
 
-    <!-- CTA -->
+    <!-- CTA with ultra-visible button effects -->
     <div class="cta-wrapper">
       <a class="vote-btn" href="https://myvote.ndu.ac.ug/login" target="_blank" rel="noopener noreferrer">
-        🗳️ &nbsp;Cast Your Vote
+        🗳️ &nbsp;CAST YOUR VOTE
       </a>
-      <div class="vote-btn-sub">Click to vote at myvote.ndu.ac.ug</div>
+      <div class="vote-btn-sub">🔒 Official portal • myvote.ndu.ac.ug</div>
     </div>
 
   </div>
